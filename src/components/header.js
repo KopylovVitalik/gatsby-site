@@ -1,33 +1,33 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import MenuLink from "./menu-link"
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
+  <header>
+    <nav
+      className="navbar is-primary"
+      role="navigation"
+      aria-label="main navigation"
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
+      <div class="container">
+        <div className="navbar-brand">
+          <h1>
+            <Link
+              className="is-size-2 has-text-danger has-text-weight-bold"
+              to="/"
+            >
+              {siteTitle}
+            </Link>
+          </h1>
+        </div>
+        <div className="navbar-end">
+          <MenuLink to="/">Home</MenuLink>
+          <MenuLink to="/about/">About</MenuLink>
+          <MenuLink to="/contact-us/">Contacts</MenuLink>
+        </div>
+      </div>
+    </nav>
   </header>
 )
 
