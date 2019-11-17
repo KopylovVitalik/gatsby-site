@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <SEO title="Contacts" />
-    <section class="hero is-success is-medium is-bold">
+    <section class="hero is-success is-fullheight-with-navbar is-bold">
       <div class="hero-body">
         <div class="container">
           <h1 class="title">Contacts title</h1>

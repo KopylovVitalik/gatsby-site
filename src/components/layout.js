@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+import { TransitionPortal } from "gatsby-plugin-transition-link";
 import Header from "./header"
 import Footer from "./footer"
 
@@ -21,14 +22,11 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <div className="page-wrapper">
       <Header siteTitle={data.site.siteMetadata.title} />
-      <TransitionState>
         <main>{children}</main>
-      </TransitionState>
-
       <Footer />
-    </>
+    </div>
   )
 }
 
