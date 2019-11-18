@@ -20,7 +20,6 @@ const IndexPage = () => {
       }
     }
   `)
-  console.log(data)
   return (
     <Layout>
       <SEO title="About" />
@@ -28,9 +27,9 @@ const IndexPage = () => {
         <div class="hero-body">
           <div class="container">
             <div className="columns">
-              {data.allMarkdownRemark.edges.map(blog => {
+              {data.allMarkdownRemark.edges.map((blog, i) => {
                 return (
-                  <div className="column">
+                  <div className="column" key={i}>
                     <div className="card is-rounded">
                       <header class="card-header">
                         <h3 className="is-size-4 card-header-title">
