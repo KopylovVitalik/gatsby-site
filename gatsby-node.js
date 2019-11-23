@@ -9,3 +9,31 @@ module.exports.onCreateNode = ({ node, actions }) => {
     createNodeField({ node, name: "slug", value: slug })
   }
 }
+
+module.exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  const blogTemplate = path.resolve(`src/templates/blog.js`)
+  const res = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+  res.data.allMarkdownRemark.edges.forEach(element => {
+    createPage({
+      component: blogTemplate,
+      path: `/blog/${element.node.fields.slug}`,
+      context: {
+        slug: element.node.fields.slug,
+      },
+    })
+  })
+}

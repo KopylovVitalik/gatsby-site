@@ -10,3 +10,5 @@ Gatsby blog post
 1. Gatsby
 2. GraphQL
 3. FrontMatter
+
+![Turtle](../images/turtle.jpg)

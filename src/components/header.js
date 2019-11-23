@@ -26,7 +26,7 @@ const Header = ({ siteTitle }) => (
         </div>
         <div className="navbar-end">
           <MenuLink to="/">Home</MenuLink>
-          <MenuLink to="/blog/">Blog</MenuLink>
+          <MenuLink to="/blog/">Blogs</MenuLink>
           <MenuLink to="/about/">About</MenuLink>
           <MenuLink to="/contact-us/">Contacts</MenuLink>
         </div>

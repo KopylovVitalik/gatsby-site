@@ -15,6 +15,9 @@ const IndexPage = () => {
               title
               date
             }
+            fields {
+              slug
+            }
           }
         }
       }
@@ -39,6 +42,7 @@ const IndexPage = () => {
                       <div class="card-content">
                         <div className="content">
                           <p>{blog.node.frontmatter.date}</p>
+                          <Link class="button is-info is-outlined" to={`/blog/${blog.node.fields.slug}`}>Read blog</Link>
                         </div>
                       </div>
                     </div>
