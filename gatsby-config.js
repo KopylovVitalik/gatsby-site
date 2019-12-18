@@ -46,6 +46,7 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     "gatsby-plugin-transition-link",
+    "gatsby-plugin-layout"
     {
       resolve: `gatsby-transformer-remark`,
       options: {
