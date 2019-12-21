@@ -13,7 +13,7 @@ const Header = ({ siteTitle }) => (
       role="navigation"
       aria-label="main navigation"
     >
-      <div class="container">
+      <div className="container">
         <div className="navbar-brand">
           <h1>
             <Link

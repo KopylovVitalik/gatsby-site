@@ -1,5 +1,4 @@
 import React from "react"
-import Layout from "../components/layout"
 import { graphql } from "gatsby"
 
 export const query = graphql`
@@ -15,7 +14,7 @@ export const query = graphql`
 `
 
 const Blog = props => (
-  <Layout>
+  <>
     <div className="container">
       <div className="notification">
         <h2>{props.data.markdownRemark.frontmatter.title}</h2>
@@ -27,7 +26,7 @@ const Blog = props => (
         ></div>
       </div>
     </div>
-  </Layout>
+  </>
 )
 
 export default Blog

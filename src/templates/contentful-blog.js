@@ -1,5 +1,4 @@
 import React from "react"
-import Layout from "../components/layout"
 import { graphql } from "gatsby"
 
 export const query = graphql`
@@ -12,20 +11,15 @@ export const query = graphql`
 `
 
 const Blog = props => (
-  <Layout>
-    <div className="container">
-      <h3 className="is-size-3">{props.data.contentfulBlogPost.title}</h3>
-      {/* <div className="notification">
-        <h2>{props.data.markdownRemark.frontmatter.title}</h2>
-        <p>{props.data.markdownRemark.frontmatter.date}</p>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: props.data.markdownRemark.html,
-          }}
-        ></div>
-      </div> */}
-    </div>
-  </Layout>
+  <>
+  <section className="hero is-success is-fullheight-with-navbar is-bold">
+      <div className="hero-body">
+        <div className="container">
+          <h1 className="title">{props.data.contentfulBlogPost.title}</h1>
+        </div>
+      </div>
+    </section>
+  </>
 )
 
 export default Blog

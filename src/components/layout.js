@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className="page-wrapper">
-      <Three />
+      {/* <Three /> */}
       <Header siteTitle={data.site.siteMetadata.title} />
         <main>{children}</main>
       <Footer />

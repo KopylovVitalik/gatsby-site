@@ -42,11 +42,15 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
+      }
     },
     `gatsby-plugin-sass`,
-    "gatsby-plugin-transition-link",
-    "gatsby-plugin-layout"
+    {
+      resolve: 'gatsby-plugin-transition-link',
+      options: {
+        layout: require.resolve(`./src/components/layout`),
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -73,5 +77,5 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-  pathPrefix: "/gatsby-site",
+  pathPrefix: `/gatsby-site`,
 }
