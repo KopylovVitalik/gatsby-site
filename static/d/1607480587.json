@@ -1,1 +1,1 @@
-{"data":{"allContentfulBlogPost":{"edges":[{"node":{"title":"Blog Post 1","slug":"post-1","publishedDate":"23 11 2019"}},{"node":{"title":"Blog post 2","slug":"post-2","publishedDate":"24 11 2019"}}]}}}
+{"data":{"allContentfulBlogPost":{"edges":[{"node":{"title":"Blog Post 1","slug":"post-1","publishedDate":"23 11 2019"}},{"node":{"title":"Blog post 2","slug":"post-2","publishedDate":"24 11 2019"}},{"node":{"title":"test post","slug":"test-post","publishedDate":null}}]}}}
