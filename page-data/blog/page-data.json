@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-pages-blog-js","path":"/blog/","result":{"data":{"allMarkdownRemark":{"edges":[{"node":{"frontmatter":{"title":"Gatsby site","date":"2019-11-18"},"fields":{"slug":"gatsby"}}},{"node":{"frontmatter":{"title":"Starter title site","date":"2019-11-16"},"fields":{"slug":"starter"}}}]}},"pageContext":{"isCreatedByStatefulCreatePages":true}}}
