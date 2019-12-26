@@ -1,25 +1,29 @@
-import React, { useMemo } from "react"
 import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
-import { Canvas, Dom, useLoader, useFrame, onUpdate } from "react-three-fiber"
-import { TextureLoader, LinearFilter, THREE } from "three"
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react'
+// A THREE.js React renderer, see: https://github.com/drcmda/react-three-fiber
+import { apply as applyThree, Canvas, useRender, useThree } from 'react-three-fiber'
+// A React animation lib, see: https://github.com/react-spring/react-spring
+import * as THREE from 'three'
+import { apply as applySpring, useSpring, a, interpolate } from 'react-spring/three'
 
 import Image from "../components/image"
 import SEO from "../components/seo"
 
-const ProjectImage = props => {
-  const texture = useMemo(() => new THREE.TextureLoader().load(props.src), [
-    props.src,
-  ])
-
+function ProjectImage({ url, opacity=1, scale=1, ...props }) {
+  const texture = useMemo(() => new THREE.TextureLoader().load(url), [url])
+  const [hovered, setHover] = useState(false)
+  const hover = useCallback(() => setHover(true), [])
+  const { factor } = useSpring({ factor: hovered ? 1.1 : 1 })
+  console.log(texture, url)
   return (
     <Canvas>
-      <mesh>
-        <planeBufferGeometry attach="geometry" args={[1, 1]} />
-        <meshBasicMaterial attach="material">
-          <texture attach="map" image={texture} onUpdate={self => texture && (self.needsUpdate = true)} />
-        </meshBasicMaterial>
-      </mesh>
+      <a.mesh {...props} onHover={hover} scale={factor.interpolate(f => [scale * f, scale * f, 1])}>
+        <planeBufferGeometry attach="geometry" args={[15, 15]} />
+        <meshLambertMaterial attach="material" opacity={opacity}>
+          <primitive attach="map" object={texture} />
+        </meshLambertMaterial>
+      </a.mesh>
     </Canvas>
   )
 }
@@ -37,7 +41,7 @@ const ContentfulProject = ({ data }) => {
                   <div className="column" key={i}>
                     <div className="card-bg">
                       {/* <img src={project.node.image.fluid.src} /> */}
-                      <ProjectImage src={project.node.image.fluid.src} />
+                      <ProjectImage url={project.node.image.fluid.src} />
                     </div>
                     <div className="card is-rounded">
                       <header className="card-header">
