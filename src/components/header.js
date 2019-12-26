@@ -30,6 +30,7 @@ const Header = ({ siteTitle }) => (
           <MenuLink to="/contentful-blog/">Contentful Blogs</MenuLink>
           <MenuLink to="/about/">About</MenuLink>
           <MenuLink to="/contact-us/">Contacts</MenuLink>
+          <MenuLink to="/projects/">Projects</MenuLink>
         </div>
       </div>
     </nav>

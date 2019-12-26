@@ -1,10 +1,9 @@
-import React from "react"
+import React, { useRef } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import Three from '../components/react-three/three'
+// import Three from "./react-three/three"
 
-
-import { TransitionPortal } from "gatsby-plugin-transition-link";
+import { TransitionPortal } from "gatsby-plugin-transition-link"
 import Header from "./header"
 import Footer from "./footer"
 
@@ -23,11 +22,13 @@ const Layout = ({ children }) => {
     }
   `)
 
+  // const canvasRef = useRef(null)
+
   return (
     <div className="page-wrapper">
-      {/* <Three /> */}
+      {/* <Three ref={canvasRef} /> */}
       <Header siteTitle={data.site.siteMetadata.title} />
-        <main>{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   )
