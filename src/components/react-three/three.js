@@ -2,7 +2,13 @@ import React, { useState, useRef, useEffect } from "react"
 import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
-import { Canvas, extend, useThree, useRender } from "react-three-fiber"
+import {
+  Canvas,
+  extend,
+  useThree,
+  useRender,
+  useFrame,
+} from "react-three-fiber"
 import { useSpring, a } from "react-spring/three"
 
 extend({ OrbitControls })
@@ -64,6 +70,7 @@ const Plane = () => (
 
 // };
 
+
 const Box = () => {
   const [hovered, setHovered] = useState(false)
   const [active, setActive] = useState(false)
@@ -71,7 +78,10 @@ const Box = () => {
     scale: active ? [1.5, 1.5, 1.5] : [1, 1, 1],
     color: hovered ? "hotpink" : "gray",
   })
-
+  const boxRef = useRef(null)
+  useFrame(() => {
+    boxRef.current.rotation.y += 0.005
+  })
   return (
     <a.mesh
       onPointerOver={() => setHovered(true)}
@@ -79,6 +89,8 @@ const Box = () => {
       onClick={() => setActive(!active)}
       scale={props.scale}
       castShadow
+      position={[2, 2, 0]}
+      ref={boxRef}
     >
       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
       <a.meshPhysicalMaterial attach="material" color={props.color} />
@@ -89,9 +101,11 @@ const Box = () => {
 export default () => {
   const isBrowser = typeof window !== "undefined"
   const canvasRef = useRef(null)
-  const boxRef = useRef(null)
+  
 
   useEffect(() => onDocumentMouseMove, [])
+
+ 
 
   const onDocumentMouseMove = event => {
     // var mouse = {}
@@ -125,6 +139,7 @@ export default () => {
             zIndex: 10,
             position: "absolute",
             backgroundColor: "transparent",
+            pointerEvents: "none",
           }}
           onMouseMove={onDocumentMouseMove}
         >
@@ -132,7 +147,7 @@ export default () => {
           <spotLight position={[15, 20, 5]} penumbra={1} castShadow />
           <fog attach="fog" args={["black", 10, 25]} />
           <Controls />
-          <Box />
+          <Box  />
           {/* <Plane /> */}
           {/* <SpaceShip /> */}
         </Canvas>
